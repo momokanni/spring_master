@@ -58,8 +58,25 @@ spring源码剖析，大部分都是基于Springframework5.0
       }  
  ```  
 > 3. 查看XmlBeanFactory.java，分析以Resource实例作为构造函数参数的办法  
+```  
+	@Deprecated
+	@SuppressWarnings({"serial", "all"})
+	public class XmlBeanFactory extends DefaultListableBeanFactory {
 
-![XmlBeanFactory.java](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory.png)  
+		private final XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(this);
+
+		public XmlBeanFactory(Resource resource) throws BeansException {
+			this(resource, null);
+		}
+
+		public XmlBeanFactory(Resource resource, BeanFactory parentBeanFactory) throws BeansException {
+			super(parentBeanFactory);
+			this.reader.loadBeanDefinitions(resource);
+		}
+
+	}  
+```  
+
 
 **XmlBeanDefinitionReader**  
 ![XmlBeanDefinitionReader层次结构图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanDefinitionReader.png)  
