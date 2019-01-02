@@ -17,6 +17,9 @@ XML读取是spring重要功能，也就可以从XmlBeanDefinitionReader中梳理
 
 ![XmlBeanDefinitionReader层次结构图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanDefinitionReader.png)  
 
+> 1. 通过继承AbstractBeanDefinitionReader中的方法，来使用ResourceLoader将资源文件路径转换为对应的Resource文件  
+> 2. 通过DocumentLoader对Resource文件进行转换，将Resource文件转换为Document文件。  
+> 3. 通过实现接口：BeanDefinitionDocumentReader的DefaultBeanDefinitionDocumentReaDer类对Document进行解析，并使用				      BeanDefinitionParserDelegate对Element进行解析。 
 
 `BeanFactory bf = new XMLBeanFactory(new ClassPathResource("beanFactoryTest.xml"))`  
 
@@ -107,8 +110,6 @@ XML读取是spring重要功能，也就可以从XmlBeanDefinitionReader中梳理
 
 
 
-> 1. 通过继承AbstractBeanDefinitionReader中的方法，来使用ResourceLoader将资源文件路径转换为对应的Resource文件  
-> 2. 通过DocumentLoader对Resource文件进行转换，将Resource文件转换为Document文件。  
-> 3. 通过实现接口：BeanDefinitionDocumentReader的DefaultBeanDefinitionDocumentReaDer类对Document进行解析，并使用BeanDefinitionParserDelegate对Element进行解析。  
+ 
 
 
