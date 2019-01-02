@@ -13,6 +13,38 @@ spring源码剖析，大部分都是基于Springframework5.0
 `BeanFactory bf = new XMLBeanFactory(new ClassPathResource("beanFactoryTest.xml"))`  
 
 ![XmlBeanFactory初始化时序图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory_%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)  
+**注：**  
+> 1. 调用ClassPathResource的构造函数来构造Resource资源文件的实例对象。  
+> 2. 配置文件封装：  
+    ```  
+      public interface InputStreamSource {  
+          InputStream getInputStream() throws IOException;  
+      }  
+      
+      public interface Resource extends InputStreamSource {  
+          boolean exists();  //是否存在  
+          default boolean isReadable() {return exists();} // 是否可读  
+          default boolean isOpen() {return false;}  // 是否打开  
+          default boolean isFile() {return false;} // 是否是一个文件  
+          URL getURL() throws IOException;  // Return a URL handle for this resource.  
+          URI getURI() throws IOException; // Return a URI handle for this resource.  
+          File getFile() throws IOException; // Return a File handle for this resource.  
+          long contentLength() throws IOException; // Determine the content length for this resource.  
+          long lastModified() throws IOException;  // Determine the last-modified timestamp for this resource.  
+          Resource createRelative(String relativePath) throws IOException; // Create a resource relative to this resource.  
+          
+          @Nullable
+	        String getFilename(); //Determine a filename for this resource  
+          
+          String getDescription(); // return a description for this resource  
+          
+          // Java8以后接口都提供默认方法 return 基础资源的字节通道
+          default ReadableByteChannel readableChannel() throws IOException {
+            return Channels.newChannel(getInputStream());
+          }
+      }  
+      ```  
+      
 ![XmlBeanFactory结构图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory.png)  
 
 **XmlBeanDefinitionReader**  
