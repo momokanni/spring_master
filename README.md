@@ -107,6 +107,7 @@ XML读取是spring重要功能，也就可以从XmlBeanDefinitionReader中梳理
 
 > 3.2 加载bean: `this.reader.loadBeanDefinitions(resource); `  
 
+![loadBeanDefinitions函数执行时序图](https://github.com/momokanni/spring_master/blob/master/UML_img/loadBeanDefinitions%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)  
 
 
 
