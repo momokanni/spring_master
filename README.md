@@ -43,7 +43,7 @@ spring源码剖析，大部分都是基于Springframework5.0
 	  // 用于在错误处理中打印出错资源文件的详细信息
           String getDescription(); // return a description for this resource  
           
-          // Java8以后接口都提供默认方法 return 基础资源的字节通道
+          // Java8 接口都提供默认方法 return 基础资源的字节通道
           default ReadableByteChannel readableChannel() throws IOException {
             return Channels.newChannel(getInputStream());
           }
