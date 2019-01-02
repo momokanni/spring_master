@@ -33,8 +33,9 @@ spring源码剖析，大部分都是基于Springframework5.0
           long contentLength() throws IOException; // Determine the content length for this resource.  
           long lastModified() throws IOException;  // Determine the last-modified timestamp for this resource.  
 	  
-	  // 基于当前资源创建一个相对资源
-          Resource createRelative(String relativePath) throws IOException; // Create a resource relative to this resource.  
+	  // 基于当前资源创建一个相对资源  
+	  // Create a resource relative to this resource.  
+          Resource createRelative(String relativePath) throws IOException;   
           
           @Nullable
 	  String getFilename(); //Determine a filename for this resource  
