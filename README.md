@@ -76,8 +76,12 @@ spring源码剖析，大部分都是基于Springframework5.0
 
 	}  
 	
+	
+```  
+
+> 3.1  由 `super(parentBeanFactory);` 跟踪到父类AbstractAutowireCapableBeanFactory的构造方法
+```  
 	/**
-	 * 由 super(parentBeanFactory); 跟踪到父类AbstractAutowireCapableBeanFactory的构造方法
 	 * ignoreDependencyInterface方法主要作用是忽略给定接口的自动装配功能。
 	 * spring官方介绍： 自动装配时忽略给定的依赖接口，典型应用是通过其他方式解析Application上下文注册依赖，类似于 BeanFactory 通过
 	 * 		   BeanFactoryAware 进行注入或者 ApplicationContext通过ApplicationContextAware进行注入。
@@ -89,8 +93,11 @@ spring源码剖析，大部分都是基于Springframework5.0
 		ignoreDependencyInterface(BeanNameAware.class);
 		ignoreDependencyInterface(BeanFactoryAware.class);
 		ignoreDependencyInterface(BeanClassLoaderAware.class);
-	}
+	}  
 ```  
+
+> 3.2 加载bean: `this.reader.loadBeanDefinitions(resource); `  
+
 
 
 **XmlBeanDefinitionReader**  
