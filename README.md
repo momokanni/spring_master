@@ -109,7 +109,26 @@ XML读取是spring重要功能，也就可以从XmlBeanDefinitionReader中梳理
 
 ![loadBeanDefinitions函数执行时序图](https://github.com/momokanni/spring_master/blob/master/UML_img/loadBeanDefinitions%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)  
 
+> 3.2.1 封装资源文件  
+> 3.2.2 获取输入流,从Resource中获取对应的InputStream并构造InputSource  
+> 3.2.3 继续调用doLoadBeanDefinitions(inputSource, encodedResource.getResource());  
 
+**根据上图的顺序看源码即可。**  
+
+#### 源码中涉及的注意点  
+> 1. EncodeResource ： 对资源文件的编码进行处理，主要逻辑体现在getReader()方法中，当设置了编码属性，spring会使用相应的编码作为输入流的编码  
+> 2. 数据准备阶段的逻辑 `this.reader.loadBeanDefinitions(resource);`：  
+```  
+	1. 对传入的resource参数进行封装
+	2. 通过SAX读取XML文件的方式来准备InputSource对象 
+	3. doLoadBeanDefinitions(inputSource,encodeResource.getResource()) // 核心处理  
+	  3.1：获取对XML文件的验证模式
+	      3.1.1：XML常用验证模式有两种：DTD && XSD
+	             DTD(Document Type Definition)文档类型定义，是一种保证XML文档格式正确有效的验证方法，可通过比较XML文档和DTD文件来看文档是否			  符合规范。
+	  3.2：加载XML文件，并得到对应的Document
+	  3.3：根据返回的Document注册Bean信息
+```  
+> 3. 
 
  
 
