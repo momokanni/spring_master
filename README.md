@@ -123,12 +123,14 @@ XML读取是spring重要功能，也就可以从XmlBeanDefinitionReader中梳理
 	2. 通过SAX读取XML文件的方式来准备InputSource对象 
 	3. doLoadBeanDefinitions(inputSource,encodeResource.getResource()) // 核心处理  
 	  3.1：获取对XML文件的验证模式
-	      3.1.1：XML常用验证模式有两种：DTD && XSD
-	             DTD(Document Type Definition)文档类型定义，是一种保证XML文档格式正确有效的验证方法，可通过比较XML文档和DTD文件来看文档是否			  符合规范。
 	  3.2：加载XML文件，并得到对应的Document
 	  3.3：根据返回的Document注册Bean信息
 ```  
-> 3. 
+> 3. XML常用验证模式有两种：DTD && XSD
+     DTD(Document Type Definition)文档类型定义，是一种保证XML文档格式正确有效的验证方法，可通过比较XML文档和DTD文件来看文档是否符合规范。  
+     `<!DOCTYPE beans PUBILC "-//Spring//DTD BEAN2.0//EN""http://www.Springframework.org/dtd/Spring-beans-2.0.dtd">`  
+     
+     XSD(XML Schemas Definition) = XML Schema语言：描述了XML文档的结构。
 
  
 
