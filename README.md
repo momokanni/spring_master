@@ -135,7 +135,15 @@ XML读取是spring重要功能，也就可以从XmlBeanDefinitionReader中梳理
 </beans>
 ```  
 
-   XSD(XML Schemas Definition) = XML Schema语言：描述了XML文档的结构。  
+    XSD(XML Schemas Definition) = XML Schema语言：描述了XML文档的结构。  (名称空间，名称空间对应的XML Schema文档的存储位置)  
+    
+> 4. 获取Document,XmlBeanFactoryReader将读取任务委托(delegate)给了DocumentLoader  
+     `private DocumentLoader documentLoader = new DefaultDocumentLoader();`  
+     
+> 5. EntityResolver:如果SAX应用程序需要实现自定义处理外部实体，则必须实现此接口并使用setEntityResolver方法向SAX驱动器注册一个实例  
+     作用： 项目本身就可以提供一个如何寻找DTD生命的方法。  
+ 
+> 6. 源码中大量使用了面向对象中单一职责的原则，将逻辑处理委托给单一的类进行处理。
 
  
 
