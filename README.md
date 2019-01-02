@@ -16,7 +16,7 @@ spring源码剖析，大部分都是基于Springframework5.0
 **注：**  
 > 1. 调用ClassPathResource的构造函数来构造Resource资源文件的实例对象。  
 > 2. 配置文件封装：  
-    ```  
+```  
       public interface InputStreamSource {  
           InputStream getInputStream() throws IOException;  
       }  
@@ -43,7 +43,7 @@ spring源码剖析，大部分都是基于Springframework5.0
             return Channels.newChannel(getInputStream());
           }
       }  
-      ```  
+ ```  
       
 ![XmlBeanFactory结构图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory.png)  
 
