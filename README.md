@@ -17,6 +17,7 @@ XML读取是spring重要功能，也就可以从XmlBeanDefinitionReader中梳理
 
 ![XmlBeanDefinitionReader层次结构图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanDefinitionReader.png)  
 
+
 `BeanFactory bf = new XMLBeanFactory(new ClassPathResource("beanFactoryTest.xml"))`  
 
 ![XmlBeanFactory初始化时序图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory_%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)  
