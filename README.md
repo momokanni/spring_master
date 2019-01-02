@@ -17,6 +17,7 @@ spring源码剖析，大部分都是基于Springframework5.0
 > 1. 调用ClassPathResource的构造函数来构造Resource资源文件的实例对象。  
 > 2. 配置文件封装：  
 ```  
+      // 封装任何能返回InputStream的类，返回一个新的InputStream对象  
       public interface InputStreamSource {  
           InputStream getInputStream() throws IOException;  
       }  
@@ -31,11 +32,14 @@ spring源码剖析，大部分都是基于Springframework5.0
           File getFile() throws IOException; // Return a File handle for this resource.  
           long contentLength() throws IOException; // Determine the content length for this resource.  
           long lastModified() throws IOException;  // Determine the last-modified timestamp for this resource.  
+	  
+	  // 基于当前资源创建一个相对资源
           Resource createRelative(String relativePath) throws IOException; // Create a resource relative to this resource.  
           
           @Nullable
 	  String getFilename(); //Determine a filename for this resource  
           
+	  // 用于在错误处理中打印出错资源文件的详细信息
           String getDescription(); // return a description for this resource  
           
           // Java8以后接口都提供默认方法 return 基础资源的字节通道
