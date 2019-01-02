@@ -15,7 +15,7 @@ spring源码剖析，大部分都是基于Springframework5.0
 ![XmlBeanFactory初始化时序图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory_%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)  
 **注：**  
 > 1. 调用ClassPathResource的构造函数来构造Resource资源文件的实例对象。  
-> 2. 配置文件封装：  
+> 2. 配置文件封装：通过Resource相关类完成对配置文件进行封装后配置文件的读取工作就转交给XmlBeanDefinitionReader来处理了  
 ```  
       // 封装任何能返回InputStream的类，返回一个新的InputStream对象  
       public interface InputStreamSource {  
@@ -55,8 +55,9 @@ spring源码剖析，大部分都是基于Springframework5.0
           }
       }  
  ```  
-      
-![XmlBeanFactory结构图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory.png)  
+> 3. 查看XmlBeanFactory.java，分析以Resource实例作为构造函数参数的办法  
+
+![XmlBeanFactory.java](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory.png)  
 
 **XmlBeanDefinitionReader**  
 ![XmlBeanDefinitionReader层次结构图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanDefinitionReader.png)  
