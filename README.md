@@ -65,13 +65,14 @@ spring源码剖析，大部分都是基于Springframework5.0
 
 		private final XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(this);
 
-		public XmlBeanFactory(Resource resource) throws BeansException {
+		public XmlBeanFactory(Resource resource) throws BeansException {  
+			
 			this(resource, null);
 		}
 
 		public XmlBeanFactory(Resource resource, BeanFactory parentBeanFactory) throws BeansException {
 			super(parentBeanFactory);
-			this.reader.loadBeanDefinitions(resource);
+			this.reader.loadBeanDefinitions(resource); // 资源加载的真正实现，重点之一
 		}
 
 	}  
