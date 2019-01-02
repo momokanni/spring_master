@@ -22,6 +22,12 @@ spring源码剖析，大部分都是基于Springframework5.0
           InputStream getInputStream() throws IOException;  
       }  
       
+      /**  
+       * 有了Resource接口便可以对所有资源文件进行统一处理  
+       * 例： Resource resource = new ClassPathResource("beanFactoryTest.xml");  
+       *     InputStream ins = resource.getInputStream();  
+       * 得到InputStream后，我们就可以照旧进行开发，并且可以利用Resource及其子类提供的诸多特性  
+       */
       public interface Resource extends InputStreamSource {  
           boolean exists();  //是否存在  
           default boolean isReadable() {return exists();} // 是否可读  
