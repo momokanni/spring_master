@@ -66,16 +66,30 @@ spring源码剖析，大部分都是基于Springframework5.0
 		private final XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(this);
 
 		public XmlBeanFactory(Resource resource) throws BeansException {  
-			
-			this(resource, null);
+			this(resource, null); // 调用XmlBeanFactory(Resource,BeanFactory)构造方法
 		}
-
+		
 		public XmlBeanFactory(Resource resource, BeanFactory parentBeanFactory) throws BeansException {
-			super(parentBeanFactory);
+			super(parentBeanFactory); // 跟踪代码到父类AbstractAutowireCapableBeanFactory构造函数，下边进行分析
 			this.reader.loadBeanDefinitions(resource); // 资源加载的真正实现，重点之一
 		}
 
 	}  
+	
+	/**
+	 * 由 super(parentBeanFactory); 跟踪到父类AbstractAutowireCapableBeanFactory的构造方法
+	 * ignoreDependencyInterface方法主要作用是忽略给定接口的自动装配功能。
+	 * spring官方介绍： 自动装配时忽略给定的依赖接口，典型应用是通过其他方式解析Application上下文注册依赖，类似于 BeanFactory 通过
+	 * 		   BeanFactoryAware 进行注入或者 ApplicationContext通过ApplicationContextAware进行注入。
+	 * 例：A中由属性B，当spring获取A的bean时，其属性B还未初始化，spring默认会初始化B，这是spring重要特性。
+	 *     但某些情况下，B不会被初始化，一种情况就是B implements BeanNameAware接口。
+	 */
+	public AbstractAutowireCapableBeanFactory() {
+		super();
+		ignoreDependencyInterface(BeanNameAware.class);
+		ignoreDependencyInterface(BeanFactoryAware.class);
+		ignoreDependencyInterface(BeanClassLoaderAware.class);
+	}
 ```  
 
 
