@@ -127,14 +127,15 @@ XML读取是spring重要功能，也就可以从XmlBeanDefinitionReader中梳理
 	  3.3：根据返回的Document注册Bean信息
 ```  
 > 3. XML常用验证模式有两种：DTD && XSD
-     DTD(Document Type Definition)文档类型定义，是一种保证XML文档格式正确有效的验证方法，可通过比较XML文档和DTD文件来看文档是否符合规范。  
+     DTD(Document Type Definition)文档类型定义，是一种保证XML文档格式正确有效的验证方法，可通过比较XML文档和DTD文件来看文档是否符合规范.
 ```
-	<!DOCTYPE beans PUBILC "-//Spring//DTD BEAN2.0//EN""http://www.Springframework.org/dtd/Spring-beans-2.0.dtd">
-	<beans>
-	...
-	</beans>
-```
-     XSD(XML Schemas Definition) = XML Schema语言：描述了XML文档的结构。  
+<!DOCTYPE beans PUBILC "-//Spring//DTD BEAN2.0//EN""http://www.Springframework.org/dtd/Spring-beans-2.0.dtd">
+<beans>
+...
+</beans>
+```  
+
+   XSD(XML Schemas Definition) = XML Schema语言：描述了XML文档的结构。  
 
  
 
