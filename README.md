@@ -22,6 +22,6 @@ spring源码剖析，大部分都是基于Springframework5.0
 
 `BeanFactory bf = new XMLBeanFactory(new ClassPathResource("beanFactoryTest.xml"))`  
 
-![XmlBeanFactory初始化时序图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)  
+![XmlBeanFactory初始化时序图](https://github.com/momokanni/spring_master/blob/master/UML_img/XmlBeanFactory_%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E5%BA%8F%E5%9B%BE.jpg)  
 
 
